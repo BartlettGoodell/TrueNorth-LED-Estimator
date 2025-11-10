@@ -242,6 +242,5 @@ with right:
     st.dataframe(df, use_container_width=True)
 
 st.markdown("---")
-st.caption("Tip: Use the 'Tiered (linear 1→25)' mode for quick quotes based on earlier vendor guidance; switch to 'Custom fixed per‑m²' to match a specific quote.')
 
 st.caption("Tip: Use the 'Tiered (linear 1→25)' mode for quick quotes based on earlier vendor guidance; switch to 'Custom fixed per-m²' to match a specific quote.")
