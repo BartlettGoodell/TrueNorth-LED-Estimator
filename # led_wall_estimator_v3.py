@@ -50,7 +50,7 @@ st.markdown(
     </style>
 
     <div class="app-header">
-        <img src="/workspaces/TrueNorth-LED-Estimator/TrueNorth Arrrow.svg"
+        <img src="https://github.com/BartlettGoodell/TrueNorth-LED-Estimator/blob/main/TrueNorth%20Arrrow.svg"
              alt="RSI Logo" width="60">
         <div>
             <h2 style="margin:0; color:#004080;">TrueNorth / RSI LED Wall Estimator</h2>
