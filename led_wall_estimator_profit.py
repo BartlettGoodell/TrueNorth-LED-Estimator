@@ -49,7 +49,7 @@ st.markdown(
         <img src="https://raw.githubusercontent.com/BartlettGoodell/TrueNorth-LED-Estimator/main/TrueNorth_Logo.svg"
              alt="RSI Logo" width="60">
         <div>
-            <h2 style="margin:0; color:#004080;">TrueNorth / RSI LED Wall Estimator</h2>
+            <h2 style="margin:0; color:#004080;">TrueNorth<br>LED Wall Estimator</h2>
         
 
     </div>
