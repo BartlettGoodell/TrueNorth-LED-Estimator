@@ -1,4 +1,4 @@
-# led_wall_estimator_v3.py
+# led_wall_estimator_profit.py
 # Streamlit app: LED Video Wall Estimator (RSI markup + Branding version)
 
 import math
