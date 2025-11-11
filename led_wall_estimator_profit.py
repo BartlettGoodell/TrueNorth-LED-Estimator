@@ -161,7 +161,7 @@ markup_pct = st.sidebar.slider("RSI markup (%)", min_value=0, max_value=40, valu
 # -------------------------------------------------
 # Main: Sizing & Preview
 # -------------------------------------------------
-st.caption("Sized in 0.5 m × 0.5 m cabinet increments (0.25 m² each)." <br>"Adjust array size and RSI markup to calculate total client billable.")
+st.caption("Sized in 0.5 m × 0.5 m cabinet increments (0.25 m² each). Adjust array size and RSI markup to calculate total client billable.")
 
 left, right = st.columns([1, 1])
 
