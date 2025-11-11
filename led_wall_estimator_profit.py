@@ -50,7 +50,7 @@ st.markdown(
              alt="RSI Logo" width="60">
         <div>
             <h2 style="margin:0; color:#004080;">TrueNorth / RSI LED Wall Estimator</h2>
-            <p style="margin:0; font-size:14px; color:#333;">SkanLab | Retail Systems Innovation</p>
+        
         </div>
     </div>
     """,
