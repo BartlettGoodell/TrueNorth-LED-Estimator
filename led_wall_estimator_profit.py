@@ -51,7 +51,7 @@ st.markdown(
         <div>
             <h2 style="margin:0; color:#004080;">TrueNorth / RSI LED Wall Estimator</h2>
         
-        </div>
+
     </div>
     """,
     unsafe_allow_html=True,
