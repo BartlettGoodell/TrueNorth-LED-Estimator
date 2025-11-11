@@ -16,29 +16,20 @@ st.set_page_config(page_title="LED Video Wall Estimator", layout="wide")
 st.markdown(
     """
     <style>
-        /* ===== Global Layout ===== */
         body, .main {
-            background-color: #F7F8FA;        /* light neutral background */
-            color: #111111;                   /* dark text */
+            background-color: #F7F8FA;
+            color: #111111;
             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         }
-
-        /* ===== Sidebar ===== */
         [data-testid="stSidebar"] {
-            background-color: #E8EBEE;        /* light grey sidebar */
+            background-color: #E8EBEE;
         }
-
-        /* ===== Metrics / Accents ===== */
         div[data-testid="stMetricValue"] {
-            color: #004080 !important;        /* navy accent */
+            color: #004080 !important;
         }
-
-        /* ===== Sliders / Interactive Elements ===== */
         .stSlider > div > div > div[role="slider"] {
             background-color: #004080 !important;
         }
-
-        /* ===== Header Wrapper ===== */
         .app-header {
             display: flex;
             align-items: center;
@@ -48,19 +39,24 @@ st.markdown(
             margin-bottom: 10px;
         }
     </style>
+    """,
+    unsafe_allow_html=True,
+)
 
+st.markdown(
+    """
     <div class="app-header">
-<img src="https://raw.githubusercontent.com/BartlettGoodell/TrueNorth-LED-Estimator/main/TrueNorth_Logo.svg"
-     alt="RSI Logo" width="60">
-
+        <img src="https://raw.githubusercontent.com/BartlettGoodell/TrueNorth-LED-Estimator/main/TrueNorth_Logo.svg"
+             alt="RSI Logo" width="60">
         <div>
             <h2 style="margin:0; color:#004080;">TrueNorth / RSI LED Wall Estimator</h2>
             <p style="margin:0; font-size:14px; color:#333;">SkanLab | Retail Systems Innovation</p>
         </div>
     </div>
     """,
-    unsafe_allow_html=True
+    unsafe_allow_html=True,
 )
+
 
 # -------------------------------------------------
 # Helpers
