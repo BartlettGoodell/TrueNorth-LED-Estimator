@@ -50,8 +50,8 @@ st.markdown(
              alt="RSI Logo" width="60">
         <div>
             <h2 style="margin:0; color:#004080; line-height:1.1; font-weight:700;">
-    TrueNorth<br>LED WALL ESTIMATOR
-    <span style="font-size:0.8em; font-weight:600;">Estimator</span>
+    TrueNorth<br><span style="font-size:0.8em; font-weight:600;">Estimator</span>LED WALL ESTIMATOR
+    
 </h2>
 
         
