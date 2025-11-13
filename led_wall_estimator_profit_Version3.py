@@ -231,7 +231,7 @@ with right:
     data = {
         "Metric": ["Width (m)", "Height (m)", "Area (m²)", "Cabinets",
                    "Per-m² base price", "Panels base $", "Controller $",
-                   "Pricing posture", "RSI Markup $", "Total per screen $",
+                   "Project Tier", "RSI Markup $", "Total per screen $",
                    "Per m² all-in $", "Per cabinet all-in $",
                    "Order qty", "Order total $"],
         "Value": [
