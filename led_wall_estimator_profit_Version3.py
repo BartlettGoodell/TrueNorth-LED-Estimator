@@ -1,5 +1,5 @@
 # led_wall_estimator_profit.py
-# Streamlit app: LED Video Wall Estimator (RSI markup + Branding version)
+# Streamlit app: LED Video Wall Estimator (Markup Masked Version)
 
 import math
 import numpy as np
@@ -45,7 +45,6 @@ st.markdown(
             margin-bottom: 10px;
         }
 
-        /* Mobile-safe SVG scaling */
         img {
             max-width: 100%;
             height: auto;
@@ -74,9 +73,11 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+
 # -------------------------------------------------
 # Helpers
 # -------------------------------------------------
+
 def linear_price_per_m2(qty: int, low_qty=1, low_price=3400.0, high_qty=25, high_price=2720.0):
     if qty <= low_qty:
         return float(low_price)
@@ -84,6 +85,7 @@ def linear_price_per_m2(qty: int, low_qty=1, low_price=3400.0, high_qty=25, high
         return float(high_price)
     frac = (qty - low_qty) / (high_qty - low_qty)
     return float(low_price + frac * (high_price - low_price))
+
 
 def compute_costs(cols, rows, qty, price_mode, custom_price_m2, controller_cost, markup_pct):
     cabinet_w = 0.5
@@ -100,6 +102,7 @@ def compute_costs(cols, rows, qty, price_mode, custom_price_m2, controller_cost,
     base_hardware = area_m2 * base_price_m2
     controller_total = controller_cost
 
+    # Markup completely hidden from UI, but applied internally
     subtotal = base_hardware + controller_total
     markup_amount = subtotal * (markup_pct / 100.0)
     grand_total = subtotal + markup_amount
@@ -116,13 +119,12 @@ def compute_costs(cols, rows, qty, price_mode, custom_price_m2, controller_cost,
         "base_price_m2": base_price_m2,
         "base_hardware": base_hardware,
         "controller_total": controller_total,
-        "markup_pct": markup_pct,
-        "markup_amount": markup_amount,
         "grand_total": grand_total,
         "per_m2": per_m2,
         "per_cabinet": per_cab,
         "order_total": order_total,
     }
+
 
 def grid_figure(cols, rows):
     cabinet_w = 0.5
@@ -142,14 +144,16 @@ def grid_figure(cols, rows):
         fig.add_shape(type="line", x0=0, y0=y, x1=width_m, y1=y, line=dict(width=1))
 
     fig.update_xaxes(range=[-0.05, width_m + 0.05], title_text="Width (m)", showgrid=False, zeroline=False)
-    fig.update_yaxes(range=[-0.05, height_m + 0.05], title_text="Height (m)", scaleanchor="x",
-                     scaleratio=1, showgrid=False, zeroline=False)
+    fig.update_yaxes(range=[-0.05, height_m + 0.05], title_text="Height (m)", scaleanchor="x", scaleratio=1,
+                     showgrid=False, zeroline=False)
 
     fig.update_layout(margin=dict(l=10, r=10, t=10, b=10), height=420, dragmode=False)
     return fig
 
+
 def money(x):
     return f"${x:,.0f}"
+
 
 # -------------------------------------------------
 # Sidebar
@@ -172,20 +176,22 @@ controller_cost = st.sidebar.number_input(
     min_value=0.0, step=25.0, value=325.0, format="%.2f"
 )
 
-st.sidebar.subheader("Project Tier")
+st.sidebar.subheader("Project Tier (Internal Only)")
 pricing_tier = st.sidebar.selectbox(
     "Project Tier",
     ["Level A", "Level B", "Level C"],
     index=1
 )
 
+# Internal-only markup table
 _tier_to_markup = {"Level A": 10, "Level B": 20, "Level C": 30}
 markup_pct = _tier_to_markup.get(pricing_tier, 20)
+
 
 # -------------------------------------------------
 # Main layout
 # -------------------------------------------------
-st.caption("Sized in 0.5 m × 0.5 m cabinet increments (0.25 m² each).")
+st.caption("Sized in 0.5 m × 0.5 m cabinet increments.")
 
 left, right = st.columns([1, 1])
 
@@ -194,7 +200,7 @@ with left:
     cols = st.slider("Columns (0.5 m increments)", min_value=1, max_value=40, value=10, step=1)
     rows = st.slider("Rows (0.5 m increments)", min_value=1, max_value=20, value=3, step=1)
 
-    st.write("Each cabinet is 0.5 m × 0.5 m. Drag sliders to simulate resizing.")
+    st.write("Each cabinet is 0.5 m × 0.5 m.")
     fig = grid_figure(cols, rows)
     st.plotly_chart(fig, use_container_width=True)
 
@@ -216,9 +222,8 @@ with right:
 
     st.subheader("Pricing Breakdown")
     st.write(f"Per-m² base price: **{money(result['base_price_m2'])}**")
-    st.write(f"Base hardware: **{money(result['base_hardware'])}**")
+    st.write(f"Hardware: **{money(result['base_hardware'])}**")
     st.write(f"Controller: **{money(result['controller_total'])}**")
-    st.write(f"Adjustment ({pricing_tier}): **{money(result['markup_amount'])}**")
 
     st.markdown("---")
     st.metric("Total (per screen)", money(result["grand_total"]))
@@ -231,7 +236,7 @@ with right:
     data = {
         "Metric": ["Width (m)", "Height (m)", "Area (m²)", "Cabinets",
                    "Per-m² base price", "Panels base $", "Controller $",
-                   "Project Tier", "RSI Markup $", "Total per screen $",
+                   "Project Tier", "Total per screen $",
                    "Per m² all-in $", "Per cabinet all-in $",
                    "Order qty", "Order total $"],
         "Value": [
@@ -239,13 +244,14 @@ with right:
             f"{result['area_m2']:.2f}", f"{result['cabinets']}",
             money(result["base_price_m2"]), money(result["base_hardware"]),
             money(result["controller_total"]), pricing_tier,
-            money(result["markup_amount"]), money(result["grand_total"]),
+            money(result["grand_total"]),
             money(result["per_m2"]), money(result["per_cabinet"]),
             f"{qty}", money(result["order_total"])
         ]
     }
+
     df = pd.DataFrame(data)
     st.dataframe(df, use_container_width=True, height=550)
 
 st.markdown("---")
-st.caption("For rapid estimating purposes only")
+st.caption("For rapid estimating purposes only.")
