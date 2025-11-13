@@ -245,7 +245,7 @@ with right:
         ]
     }
     df = pd.DataFrame(data)
-    st.dataframe(df, use_container_width=True, height=500)
+    st.dataframe(df, use_container_width=True, height=550)
 
 st.markdown("---")
 st.caption("For rapid estimating purposes only")
