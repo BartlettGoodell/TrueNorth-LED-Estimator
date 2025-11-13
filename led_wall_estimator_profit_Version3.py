@@ -248,4 +248,4 @@ with right:
     st.dataframe(df, use_container_width=True)
 
 st.markdown("---")
-st.caption("Tiered pricing models reflect vendor breakpoints. Project tier sets internal margin posture.")
+st.caption("For rapid estimating purposes only")
