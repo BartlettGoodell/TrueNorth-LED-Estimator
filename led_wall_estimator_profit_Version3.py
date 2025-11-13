@@ -249,7 +249,7 @@ with right:
     }
 
     df = pd.DataFrame(data)
-    st.dataframe(df, use_container_width=True, height=550)
+    st.dataframe(df, use_container_width=True, height=480)
 
 
 st.markdown("---")
