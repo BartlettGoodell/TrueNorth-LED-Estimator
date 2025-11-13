@@ -163,7 +163,7 @@ pricing_tier = st.sidebar.selectbox(
     "Project Tier",
     ["Level A", "Level B", "Level C"],
     index=1,
-    help="For internal client codingpurposes only."
+    help="For internal purposes only."
 )
 
 # Map posture to internal markup % (not shown to user)
@@ -173,7 +173,7 @@ markup_pct = _tier_to_markup.get(pricing_tier, 20)
 # -------------------------------------------------
 # Main: Sizing & Preview
 # -------------------------------------------------
-st.caption("Sized in 0.5 m × 0.5 m cabinet increments (0.25 m² each). Adjust array size and pricing posture to calculate total client billable.")
+st.caption("Sized in 0.5 m × 0.5 m cabinet increments (0.25 m² each).")
 
 left, right = st.columns([1, 1])
 
